@@ -1,0 +1,102 @@
+<div class="row">
+	<div class="jumbotron">
+        <h1>Welcome to the Bike Partisans social network</h1>
+        <h3>Power to the pedallers!</h3>
+        <p class="text-center">
+        	<a class="btn btn-primary btn-lg" ng-click="showRegister=false">Login</a>
+        	<a class="btn btn-primary btn-lg" ng-click="showRegister=true">Register</a>
+        </p>
+    </div>
+</div>
+
+<div class="row">
+
+	<div class="col-lg-3"></div>
+
+	<div class="col-lg-6 text" ng-hide="showRegister">
+    	<div class="well bs-component">
+        	<form class="form-horizontal">
+        		<fieldset>
+        			<legend>Login</legend>
+        			<div class="form-group">
+	                    <label class="col-lg-2 control-label" for="login-username">Username: </label>
+	                    <div class="col-lg-10">
+	                      <input type="text" placeholder="User" id="login-username" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-lg-2 control-label" for="login-password">Password: </label>
+	                    <div class="col-lg-10">
+	                      <input type="password" placeholder="Password" id="login-password" class="form-control">
+	                    </div>
+	                </div>
+	                <button class="btn btn-primary pull-right" type="submit">Login</button>
+        		</fieldset>
+        	</form>
+    	</div>
+    </div>
+
+    <div class="col-lg-6" ng-show="showRegister">
+    	<div class="well bs-component">
+        	<form class="form-horizontal">
+        		<fieldset>
+        			<legend>Register</legend>
+        			<div class="form-group">
+	                    <label class="col-lg-2 control-label" for="register-username">Username: </label>
+	                    <div class="col-lg-10">
+	                      <input type="text" placeholder="User" id="register-username" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-lg-2 control-label" for="register-password">Password: </label>
+	                    <div class="col-lg-10">
+	                      <input type="password" placeholder="Password" id="register-password" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-lg-2 control-label" for="register-verify-password">Verify Password: </label>
+	                    <div class="col-lg-10">
+	                      <input type="password" placeholder="Password" id="register-veirfy-password" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-lg-2 control-label" for="register-name">Name: </label>
+	                    <div class="col-lg-10">
+	                      <input type="text" placeholder="Name" id="register-name" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                    <label class="col-lg-2 control-label" for="register-email">Email: </label>
+	                    <div class="col-lg-10">
+	                      <input type="email" placeholder="Email" id="register-email" class="form-control">
+	                    </div>
+	                </div>
+	                <div class="form-group">
+
+	                	<div class="form-group">
+		                    <label class="col-lg-2 control-label">Gender</label>
+		                    <div class="col-lg-10">
+		                      <div class="radio">
+		                        <label>
+		                          <input type="radio" checked="" value="male" id="gender-male" name="user-gender">
+		                          Male
+		                        </label>
+		                        <label>
+		                          <input type="radio" value="female" id="gender-female" name="user-gender">
+		                          Female
+		                        </label>
+		                        <label>
+		                          <input type="radio" value="other" id="gender-other" name="user-gender">
+		                          Other
+		                        </label>
+		                      </div>
+		                    </div>
+	                  	</div>
+	                </div>
+	                <button class="btn btn-primary pull-right" type="submit">Register</button>
+        		</fieldset>
+        	</form>
+    	</div>
+    </div>
+
+</div>
