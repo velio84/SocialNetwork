@@ -1,7 +1,7 @@
 "use strict";
 
 socialNetwork.controller( "UserController", 
-	function UserController( $scope, $location, userService, authentication, baseUrl ) {
+	function UserController( $scope, $location, userService, authentication, notyService ) {
 
 		$scope.login = function() {
 			if( !authentication.isLogged() ) {
@@ -11,11 +11,10 @@ socialNetwork.controller( "UserController",
 						function( data ) {
 							authentication.setUserToStorage( data );
                             $( "#checkboxForLogin" ).click();
-							console.log('login successful!!!');
-							//TODO noty for login success
+                            notyService.showInfo( "Welcome, " + data.userName + "!" );
 						},
 						function( error ) {
-							//TODO login failed
+                            notyService.showError( "Login failed!", error );
 						}
 					);
 			}
@@ -28,12 +27,11 @@ socialNetwork.controller( "UserController",
 					.then(
 						function( data ) {
 							authentication.setUserToStorage( data );
-							console.log( "register successful!!!" );
-							console.log( data );
-							//TODO noty for register success
+                            $( "#checkboxForLogin" ).click();
+                            notyService.showInfo( "Welcome, " + data.userName + "!" );
 						},
 						function( error ) {
-							//TODO register failed
+                            notyService.showError( "Registration failed!", error );
 						}
 					);
 			}
@@ -48,15 +46,13 @@ socialNetwork.controller( "UserController",
                             authentication.clearUserFromStorage();
                             $( "#checkboxForLogin" ).click();
                             $location.path( "/" );
-                            console.log( "logout successful!" );
+                            notyService.showInfo( "Goodbye and have fun in the real life!" );
                         },
                         function( error ) {
-                            //TODO logout failed
+                            notyService.showError( "Logout failed!", error );
                         }
                     );
             }
         };
-
-		$scope.userIsLogged = false;
-	} 
+    }
 );
