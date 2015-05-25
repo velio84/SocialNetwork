@@ -8,9 +8,9 @@
     <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body ng-app="socialNetwork">
+<body ng-app="socialNetwork" ng-controller="AppController">
 
-    <header id="main-site-header" ng-include="'partials/navbar.html'" ng-show="userIsLogged"></header>
+    <header id="main-site-header" ng-include="'partials/navbar.html'" ng-if="authentication.isLogged()"></header>
 
     <div id="main-content" class="container" ng-view>
 
@@ -22,8 +22,6 @@
                 Author: Velichko Golev | Date: May, 2015
             </small>
         </div>
-
-        <input class="hide" type="checkbox"  ng-model="userIsLogged" id="checkboxForLogin"/>
     </footer>
 
     <script src="libs/jquery.js"></script>
@@ -41,6 +39,7 @@
 
     <script src="js/controllers/HomeController.js"></script>
     <script src="js/controllers/UserController.js"></script>
+    <script src="js/controllers/AppController.js"></script>
 
 </body>
 </html>

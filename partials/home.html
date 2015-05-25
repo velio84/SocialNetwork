@@ -1,4 +1,4 @@
-<div ng-hide="userIsLogged">
+<div ng-if="!authentication.isLogged()">
 	<div class="row">
 		<div class="jumbotron">
 			<h1>Welcome to THE social network</h1>
@@ -102,6 +102,6 @@
 	</div>
 </div>
 
-<div ng-show="userIsLogged">
+<div ng-if="authentication.isLogged()">
 	<h1>Success - user is logged</h1>
 </div>

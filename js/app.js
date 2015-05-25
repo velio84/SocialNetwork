@@ -14,6 +14,7 @@ var socialNetwork = angular
 						}
 					}
 				}
-			});
+			})
+            .otherwise({redirectTo: '/'})
 	})
 	.constant( "baseUrl", "http://softuni-social-network.azurewebsites.net/api/" );

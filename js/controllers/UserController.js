@@ -10,7 +10,6 @@ socialNetwork.controller( "UserController",
 					.then(
 						function( data ) {
 							authentication.setUserToStorage( data );
-                            $( "#checkboxForLogin" ).click();
                             notyService.showInfo( "Welcome, " + data.userName + "!" );
 						},
 						function( error ) {
@@ -27,7 +26,6 @@ socialNetwork.controller( "UserController",
 					.then(
 						function( data ) {
 							authentication.setUserToStorage( data );
-                            $( "#checkboxForLogin" ).click();
                             notyService.showInfo( "Welcome, " + data.userName + "!" );
 						},
 						function( error ) {
@@ -44,7 +42,6 @@ socialNetwork.controller( "UserController",
                     .then(
                         function() {
                             authentication.clearUserFromStorage();
-                            $( "#checkboxForLogin" ).click();
                             $location.path( "/" );
                             notyService.showInfo( "Goodbye and have fun in the real life!" );
                         },
