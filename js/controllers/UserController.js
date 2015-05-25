@@ -1,11 +1,11 @@
 "use strict";
 
 socialNetwork.controller( "UserController", 
-	function UserController( $scope, userService, authentication, baseUrl ) {
+	function UserController( $scope, $location, userService, authentication, baseUrl ) {
 
 		$scope.login = function() {
 			if( !authentication.isLogged() ) {
-				userService.login( $scope.userLogin )
+				userService().login( $scope.userLogin )
 					.$promise
 					.then(
 						function( data ) {
@@ -23,7 +23,7 @@ socialNetwork.controller( "UserController",
 
 		$scope.register = function() {
 			if( !authentication.isLogged() ) {
-				userService.register( $scope.userRegister )
+				userService().register( $scope.userRegister )
 					.$promise
 					.then(
 						function( data ) {
@@ -41,11 +41,13 @@ socialNetwork.controller( "UserController",
 
         $scope.logout = function() {
             if( authentication.isLogged() ) {
-                userService.logout()
+                userService( authentication.getSessionToken() ).logout()
                     .$promise
                     .then(
                         function() {
                             authentication.clearUserFromStorage();
+                            $( "#checkboxForLogin" ).click();
+                            $location.path( "/" );
                             console.log( "logout successful!" );
                         },
                         function( error ) {

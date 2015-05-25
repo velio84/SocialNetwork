@@ -1,37 +1,39 @@
 "use strict";
 
 socialNetwork.factory( "userService",
-	function( $http, $resource, baseUrl, authentication ) {
+	function( $http, $resource, baseUrl ) {
 
+        return function( token ) {
+            $http.defaults.headers.common[ "Authorization" ] = "Bearer " + token;
 
-        
+            var user = {},
+                request = $resource(
+                baseUrl + "users/:option1/:option2/:option3",
+                {
+                    option1: "@option1",
+                    option2: "@option2",
+                    option3: "@option3"
+                },
+                {
+                    edit: {
+                        method: "PUT"
+                    }
+                }
+            );
 
-		$http.defaults.headers.common[ "Authorization" ] = "Bearer " + authentication.getSessionToken();
+            user.login = function( loginData ) {
+                return request.save( { option1: "login" }, loginData );
+            };
 
-		var user = $resource(
-			baseUrl + "users/:option1/:option2/:option3",
-			{
-				option1: "@option1",
-				option2: "@option2",
-				option3: "@option3"
-			},
-			{
-				edit: {
-					method: "PUT"
-				}
-			}
-		);
+            user.register = function( registerData ) {
+                return request.save( { option1: "register" }, registerData );
+            };
 
-		return {
-			login: function( loginData ) {
-				return user.save( { option1: "login" }, loginData );
-			},
-			register: function( registerData ) {
-				return user.save( { option1: "register" }, registerData );
-			},
-			logout: function() {
-				return user.save( { option1: "logout" } );
-			}
-		};
+            user.logout = function() {
+                return request.save( { option1: "logout" } );
+            };
+
+            return user;
+        };
 	}
 );
