@@ -10,6 +10,7 @@ socialNetwork.controller( "UserController",
 					.then(
 						function( data ) {
 							authentication.setUserToStorage( data );
+                            $( "#checkboxForLogin" ).click();
 							console.log('login successful!!!');
 							//TODO noty for login success
 						},
@@ -27,7 +28,7 @@ socialNetwork.controller( "UserController",
 					.then(
 						function( data ) {
 							authentication.setUserToStorage( data );
-							console.log('register successful!!!');
+							console.log( "register successful!!!" );
 							console.log( data );
 							//TODO noty for register success
 						},
@@ -36,6 +37,24 @@ socialNetwork.controller( "UserController",
 						}
 					);
 			}
-		}
+		};
+
+        $scope.logout = function() {
+            if( authentication.isLogged() ) {
+                userService.logout()
+                    .$promise
+                    .then(
+                        function() {
+                            authentication.clearUserFromStorage();
+                            console.log( "logout successful!" );
+                        },
+                        function( error ) {
+                            //TODO logout failed
+                        }
+                    );
+            }
+        };
+
+		$scope.userIsLogged = false;
 	} 
 );

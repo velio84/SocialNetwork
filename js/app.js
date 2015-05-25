@@ -6,8 +6,14 @@ var socialNetwork = angular
 
 		$routeProvider
 			.when( "/", {
-				templateUrl: "/partials/login-register.html"
-			})
-			.otherwise({redirectTo: "/"});
+				templateUrl: "/partials/home.html",
+				resolve:{
+					isLogged: function($location){
+						if( localStorage.getItem( "sessionToken" ) ){
+							$location.path('/');
+						}
+					}
+				}
+			});
 	})
 	.constant( "baseUrl", "http://softuni-social-network.azurewebsites.net/api/" );

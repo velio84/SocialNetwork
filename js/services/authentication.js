@@ -19,15 +19,15 @@ socialNetwork.factory( "authentication", function(){
 		delete localStorage[ "name" ];
     };
 
-    authentication.getSessionToken = function(){
+    authentication.getSessionToken = function() {
         return localStorage[ "sessionToken" ];
     };
 
-    authentication.getUsername = function(){
+    authentication.getUsername = function() {
         return localStorage[ "username" ];
     };
 
-    authentication.getName = function(){
+    authentication.getName = function() {
         return localStorage[ "name" ];
     };
 
