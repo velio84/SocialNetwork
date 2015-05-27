@@ -17,4 +17,7 @@ var socialNetwork = angular
 			})
             .otherwise({redirectTo: '/'})
 	})
-	.constant( "baseUrl", "http://softuni-social-network.azurewebsites.net/api/" );
+	.constant( {
+        "baseUrl": "http://softuni-social-network.azurewebsites.net/api/",
+        "PAGE_SIZE": 5
+    } );

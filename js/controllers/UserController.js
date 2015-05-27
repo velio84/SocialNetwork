@@ -51,5 +51,7 @@ socialNetwork.controller( "UserController",
                     );
             }
         };
+
+        $scope.username = authentication.getUsername();
     }
 );

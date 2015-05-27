@@ -1,6 +1,6 @@
 <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="UserController">
     <div class="container">
-        <a href="#/" class="navbar-brand">Social Network</a>
+        <a href="#/" class="navbar-brand">{{ username }}</a>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
@@ -10,8 +10,14 @@
 
         <div class="collapse navbar-collapse" id="navbar-main">
 
+            <ul class="nav navbar-nav pull-left">
+                <li class=""><a href="#">Messages</a></li>
+                <li class=""><a href="#">Friends</a></li>
+                <li class=""><a href="#">Settings</a></li>
+            </ul>
+
             <ul class="nav navbar-nav pull-right">
-                <li class=""><a href="#" ng-click="logout()">Logout</a></li>
+                <li class=""><a href="#/" ng-click="logout()">Logout</a></li>
             </ul>
         </div>
     </div>

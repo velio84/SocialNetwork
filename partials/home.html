@@ -102,6 +102,14 @@
 	</div>
 </div>
 
-<div ng-if="authentication.isLogged()">
-	<h1>Success - user is logged</h1>
+<div ng-if="authentication.isLogged()" profile-controller-directive>
+	<h2>News feed</h2>
+    <div class="form-group col-md-9">
+        <div ng-include="'partials/posts.html'" ng-init="loadNewsFeed()" infinite-scroll='loadNewsFeed()' infinite-scroll-disabled='wallBusy' infinite-scroll-distance="0"  class="row">
+
+        </div>
+    </div>
+    <div class="media col-md-3" ng-init="getOwnFriendsListPreview()" ng-include="'partials/friends-preview.html'">
+
+    </div>
 </div>

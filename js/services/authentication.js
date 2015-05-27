@@ -10,13 +10,13 @@ socialNetwork.factory( "authentication", function(){
     authentication.setUserToStorage = function ( data ) {
     	localStorage[ "sessionToken" ] = data[ "access_token" ];
 		localStorage[ "username" ] = data[ "userName" ];
-		localStorage[ "name" ] = data[ "name" ];
+		//localStorage[ "name" ] = data[ "name" ];
     };
 
     authentication.clearUserFromStorage = function () {
         delete localStorage[ "sessionToken" ];
 		delete localStorage[ "username" ];
-		delete localStorage[ "name" ];
+		//delete localStorage[ "name" ];
     };
 
     authentication.getSessionToken = function() {
@@ -27,9 +27,9 @@ socialNetwork.factory( "authentication", function(){
         return localStorage[ "username" ];
     };
 
-    authentication.getName = function() {
-        return localStorage[ "name" ];
-    };
+    //authentication.getName = function() {
+    //    return localStorage[ "name" ];
+    //};
 
     return authentication;
 });
