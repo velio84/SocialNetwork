@@ -52,6 +52,28 @@ socialNetwork.controller( "UserController",
             }
         };
 
+        $scope.searchUser = function(){
+            if( authentication.isLogged() && $scope.searchTerm.trim() !== "" ) {
+                userService( authentication.getSessionToken() ).searchUser( $scope.searchTerm )
+                    .$promise
+                    .then(
+                        function( data ) {
+                            $scope.searchResults = data;
+                        }
+                    );
+            } else {
+                $scope.searchResults = undefined;
+            }
+        };
+
+        $scope.clearSearchResults = function() {
+            $timeout( function() {
+                $scope.searchResults = undefined;
+                $scope.searchTerm = "";
+            }, 300);
+        };
+
+
         $scope.username = authentication.getUsername();
     }
 );
