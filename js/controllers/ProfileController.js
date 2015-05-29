@@ -56,6 +56,20 @@ socialNetwork.controller( "ProfileController",
             }
         };
 
-
+        $scope.editPassword = function() {
+            if( authentication.isLogged() ) {
+                profileService( authentication.getSessionToken() ).update( $scope.passwordUpdate, "changepassword" )
+                    .$promise
+                    .then(
+                    function () {
+                        notyService.showInfo( "Password changed successfully." );
+                        $location.path('/');
+                    },
+                    function ( error ) {
+                        notyService.showError( "Failed to change password!", error );
+                    }
+                );
+            }
+        };
     }
 );

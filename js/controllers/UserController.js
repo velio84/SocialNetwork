@@ -1,7 +1,7 @@
 "use strict";
 
 socialNetwork.controller( "UserController", 
-	function UserController( $scope, $location, userService, authentication, notyService ) {
+	function UserController( $scope, $location, $timeout, userService, authentication, notyService ) {
 
 		$scope.login = function() {
 			if( !authentication.isLogged() ) {

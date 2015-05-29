@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="UserController">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="UserController">
     <div class="container-fluid">
         <a href="#/" class="navbar-brand">{{ username }}</a>
 
@@ -18,8 +18,8 @@
 
             <ul class="nav navbar-nav pull-right">
                 <li class=""><a href="#/">Profile</a></li>
-                <li class=""><a href="#/">Password</a></li>
-                <li class=""><a href="#/">Logout</a></li>
+                <li class=""><a href="#/profile/password">Password</a></li>
+                <li class=""><a href="#/" ng-click="logout()">Logout</a></li>
             </ul>
 
             <form class="navbar-form navbar-right" id="search-form" role="search">

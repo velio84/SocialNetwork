@@ -7,14 +7,17 @@ var socialNetwork = angular
 		$routeProvider
 			.when( "/", {
 				templateUrl: "/partials/home.html",
-				resolve:{
-					isLogged: function($location){
-						if( localStorage.getItem( "sessionToken" ) ){
-							$location.path('/');
+				resolve: {
+					isLogged: function($location) {
+						if( localStorage.getItem( "sessionToken" ) ) {
+							$location.path( "/" );
 						}
 					}
 				}
 			})
+            .when( "/profile/password/", {
+                templateUrl: "/partials/profile-password.html"
+            })
             .otherwise({redirectTo: '/'})
 	})
 	.constant( {
