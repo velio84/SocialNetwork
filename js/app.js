@@ -18,6 +18,9 @@ var socialNetwork = angular
             .when( "/profile/password/", {
                 templateUrl: "/partials/profile-password.html"
             })
+            .when( "/user/:username/wall/", {
+                templateUrl: "/partials/wall.html"
+            })
             .otherwise({redirectTo: '/'})
 	})
 	.constant( {

@@ -1,7 +1,9 @@
 "use strict";
 
 socialNetwork.controller( "UserController", 
-	function UserController( $scope, $location, $timeout, userService, authentication, notyService ) {
+	function UserController( $scope, $location, $timeout, $routeParams, userService, authentication, notyService ) {
+
+        var feedStartPostId;
 
 		$scope.login = function() {
 			if( !authentication.isLogged() ) {
@@ -73,6 +75,71 @@ socialNetwork.controller( "UserController",
             }, 300);
         };
 
+        $scope.getWallOwner = function() {
+            if ( authentication.isLogged() ) {
+                userService( authentication.getSessionToken() ).getUserFullData( $routeParams[ "username" ] )
+                    .$promise
+                    .then(
+                    function( data ) {
+                        $scope.wallOwner = data;
+                        if( authentication.getUsername() !== $scope.wallOwner.username ) {
+                            if ( data.isFriend ) {
+                                $scope.wallOwner.status = "friend";
+                            } else if( data.hasPendingRequest ) {
+                                $scope.wallOwner.status = "pending";
+                            } else {
+                                $scope.wallOwner.status = "invite";
+                            }
+                        }
+
+                        if( $scope.wallOwner.isFriend && $location.path() === "/user/" + $routeParams[ "username" ] + "/wall/" ) {
+                            $scope.getUserFriendsListPreview();
+                        }
+
+                        if( !$scope.wallOwner.isFriend && $routeParams[ "username"] !== $scope.username && $location.path() === "/user/" + $routeParams[ "username" ] + "/friends/") {
+                            $location.path( "/" );
+                        }
+                    },
+                    function( error ) {
+                        notyService.showError( "Failed to load user data!", error );
+                    }
+                );
+            }
+        };
+
+        $scope.loadUserWall = function() {
+            if( authentication.isLogged() ) {
+                userService( authentication.getSessionToken() ).getUserWall( $routeParams[ "username" ], PAGE_SIZE, feedStartPostId )
+                    .$promise
+                    .then(
+                    function ( data ) {
+                        $scope.posts = $scope.posts.concat( data );
+                        if( $scope.posts.length > 0 ) {
+                            feedStartPostId = $scope.posts[ $scope.posts.length - 1 ].id;
+                        }
+                    },
+                    function ( error ) {
+                        notyService.showError( "Failed to load user wall!", error );
+                    }
+                );
+            }
+        };
+
+        $scope.getUserFriendsListPreview = function() {
+            if (authentication.isLogged() ) {
+                userService( authentication.getSessionToken() ).getUserFriendsPreview( $routeParams[ "username" ] )
+                    .$promise
+                    .then(
+                    function( data ) {
+                        data.userFriendsUrl = "#/user/" + $routeParams[ "username" ] + "/friends/";
+                        $scope.friendsListPreview = data;
+                    },
+                    function ( error ) {
+                        notyService.showError( "Failed to load user friends!", error );
+                    }
+                );
+            }
+        };
 
         $scope.username = authentication.getUsername();
     }

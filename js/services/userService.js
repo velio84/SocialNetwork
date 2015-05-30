@@ -34,7 +34,7 @@ socialNetwork.factory( "userService",
             };
 
             user.getUserWall = function( username, pageSize, startPostId ) {
-                var option2 = "wall?StartPostId" + ( startPostId ? "=" + startPostId : "" ) + "&PageSize=" + pageSize;
+                var option2 = "wall?StartPostId=" + ( startPostId ? startPostId : "" ) + "&PageSize=" + pageSize;
 
                 return request.query({ option1: username, option2: option2});
             };
