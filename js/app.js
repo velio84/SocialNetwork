@@ -16,13 +16,34 @@ var socialNetwork = angular
 				}
 			})
             .when( "/profile/", {
-                templateUrl: "/partials/profile-details.html"
+                templateUrl: "/partials/profile-details.html",
+                resolve: {
+                    isLogged: function($location) {
+                        if( !localStorage.getItem( "sessionToken" ) ) {
+                            $location.path( "/" );
+                        }
+                    }
+                }
             })
             .when( "/profile/password/", {
-                templateUrl: "/partials/profile-password.html"
+                templateUrl: "/partials/profile-password.html",
+                resolve: {
+                    isLogged: function($location) {
+                        if( !localStorage.getItem( "sessionToken" ) ) {
+                            $location.path( "/" );
+                        }
+                    }
+                }
             })
             .when( "/user/:username/wall/", {
-                templateUrl: "/partials/wall.html"
+                templateUrl: "/partials/wall.html",
+                resolve: {
+                    isLogged: function($location) {
+                        if( !localStorage.getItem( "sessionToken" ) ) {
+                            $location.path( "/" );
+                        }
+                    }
+                }
             })
             .otherwise({redirectTo: '/'})
 	})
