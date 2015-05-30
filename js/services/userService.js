@@ -49,10 +49,6 @@ socialNetwork.factory( "userService",
                 return request.get( { option1: username } );
             };
 
-            user.getLoggedUserFullData = function() {
-                return request.get( { option1: "me" } );
-            };
-
             user.getUserPreviewData = function( username ) {
                 return request.get ({ option1: username, option2: "preview" } );
             };

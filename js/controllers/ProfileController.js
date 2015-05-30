@@ -71,5 +71,35 @@ socialNetwork.controller( "ProfileController",
                 );
             }
         };
+
+        $scope.editDetails = function() {
+            if( authentication.isLogged() ) {
+                profileService( authentication.getSessionToken() ).update( $scope.me )
+                    .$promise
+                    .then(
+                    function () {
+                        notyService.showInfo( "Profile edited successfully.");
+                    },
+                    function ( error ) {
+                        notyService.showError( "Failed to edit profile!", error );
+                    }
+                );
+            }
+        };
+
+        $scope.getUserDetails = function() {
+            if( authentication.isLogged() ) {
+                profileService( authentication.getSessionToken() ).me()
+                    .$promise
+                    .then(
+                    function( data ) {
+                        $scope.me = data;
+                    },
+                    function( error ) {
+                        notyService.showError( "Failed to load user details!", error )
+                    }
+                );
+            }
+        };
     }
 );

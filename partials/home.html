@@ -105,7 +105,7 @@
 <div ng-if="authentication.isLogged()" profile-controller-directive>
 	<h2>News feed</h2>
     <div class="form-group col-md-9">
-        <div ng-include="'partials/posts.html'" ng-init="loadNewsFeed()" infinite-scroll='loadNewsFeed()' infinite-scroll-disabled='wallBusy' infinite-scroll-distance="0"  class="row">
+        <div ng-include="'partials/posts.html'" ng-init="loadNewsFeed()" class="row">
 
         </div>
     </div>

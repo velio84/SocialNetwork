@@ -15,6 +15,9 @@ var socialNetwork = angular
 					}
 				}
 			})
+            .when( "/profile/", {
+                templateUrl: "/partials/profile-details.html"
+            })
             .when( "/profile/password/", {
                 templateUrl: "/partials/profile-password.html"
             })

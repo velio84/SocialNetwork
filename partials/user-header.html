@@ -4,8 +4,8 @@
 <div class="media-body">
     <h2><a href="#/user/{{wallOwner.username}}/wall/">{{wallOwner.name}}</a></h2>
     <div class="status">
-        <button ng-if="wallOwner.status === 'invite'" type="submit" class="btn btn-lg btn-danger" ng-click="sendFriendRequest(wallOwner)">Invite</button>
-        <button ng-if="wallOwner.status === 'friend'" class="btn btn-lg btn-success" disabled>Friend</button>
-        <button ng-if="wallOwner.status === 'pending'" class="btn btn-lg btn-warning" disabled>Pending</button>
+        <button ng-if="wallOwner.status === 'invite'" type="submit" class="btn btn-sm btn-info" ng-click="sendFriendRequest(wallOwner)">Send Request</button>
+        <button ng-if="wallOwner.status === 'friend'" class="btn btn-sm btn-success" disabled>Friend</button>
+        <button ng-if="wallOwner.status === 'pending'" class="btn btn-sm btn-warning" disabled>Pending</button>
     </div>
 </div>

@@ -7,7 +7,7 @@
     <div class="form-group col-md-9 col-xs-12">
         <div ng-if="isOwnWall || wallOwner.isFriend" ng-include="'partials/post-box.html'" class="row well">
         </div>
-        <div ng-if="isLogged() && wallOwner" ng-include="'partials/posts.html'" class="row" infinite-scroll='loadUserWall()' infinite-scroll-disabled='busy' infinite-scroll-distance="0">
+        <div ng-if="isLogged() && wallOwner" ng-include="'partials/posts.html'" class="row" ng-init='loadUserWall()' infinite-scroll-disabled='busy' infinite-scroll-distance="0">
         </div>
     </div>
     <div profile-controller-directive>
