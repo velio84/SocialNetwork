@@ -37,10 +37,22 @@ var socialNetwork = angular
             })
             .when( "/user/:username/wall/", {
                 templateUrl: "/partials/wall.html",
+                controller: "AppController",
                 resolve: {
                     isLogged: function($location) {
                         if( !localStorage.getItem( "sessionToken" ) ) {
                             $location.path( "/" );
+                        }
+                    }
+                }
+            })
+            .when('/user/:username/friends/', {
+                templateUrl: 'partials/friends.html',
+                controller: "AppController",
+                resolve:{
+                    isLogged: function($location){
+                        if( !localStorage.getItem( "sessionToken" ) ) {
+                            $location.path('/');
                         }
                     }
                 }
