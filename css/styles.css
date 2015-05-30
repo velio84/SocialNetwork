@@ -23,3 +23,10 @@
     border: none;
     margin-top: 20pt;
 }
+
+.cover-upload-section {
+    background: rgba(255,255,255,0.5);
+    position: absolute;
+    top: 20%;
+    left: 40px;
+}

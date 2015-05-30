@@ -101,5 +101,50 @@ socialNetwork.controller( "ProfileController",
                 );
             }
         };
+
+        $scope.clickUpload = function(element){
+            angular.element(element).trigger('click');
+        };
+
+        $scope.uploadImage = function( event ) {
+            var previewElement,
+                inputElement,
+                file,
+                reader,
+                sizeLimit;
+
+            switch( event.target.id ) {
+                case "profile-image":
+                    previewElement = $( ".picture-preview" );
+                    inputElement = $( "#profile-image" );
+                    sizeLimit = 131072;
+                    break;
+                case "cover-image":
+                    previewElement = $( ".cover-preview" );
+                    inputElement = $( "#cover-image" );
+                    sizeLimit = 1048576;
+                    break;
+            }
+
+            file = event.target.files[0];
+
+            if( file && !file.type.match( /image\/.*/ ) ) {
+                notyService.showError( "Invalid file format." );
+            } else if( file && file.size > sizeLimit ) {
+                notyService.showError( "File size limit exceeded." );
+            } else if( file ) {
+                reader = new FileReader();
+                reader.onload = function() {
+                    previewElement.attr( "src", reader.result );
+                    inputElement.attr( "data-picture-data", reader.result );
+                    if( event.target.id === "profile-image" ) {
+                        $scope.me.profileImageData = reader.result;
+                    } else {
+                        $scope.me.coverImageData = reader.result;
+                    }
+                };
+                reader.readAsDataURL( file );
+            }
+        };
     }
 );
