@@ -1,12 +1,6 @@
 <div profile-controller-directive ng-init="getFriendRequests()">
     <div class="white">
         <legend><h2>Pending requests ({{pendingRequests.length}} total)</h2></legend>
-        <div class="form-group col-sm-11">
-            <label for="input1" class="col-sm-4 control-label">Search by name</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" id="input1" placeholder="Payee Name" ng-model="filterRequests.user.name">
-            </div>
-        </div>
 
         <div class="pending-requests" data-example-id="thumbnails-with-custom-content">
             <div class="row" >
@@ -19,7 +13,7 @@
                             </h3>
                             <p>
                                 <button ng-click="acceptFriendRequest(request)" class="btn btn-success" role="button">Accept</button>
-                                <button ng-click="rejectFriendRequest(request)" class="btn btn-default" role="button">Reject</button>
+                                <button ng-click="rejectFriendRequest(request)" class="btn btn-warning" role="button">Reject</button>
                             </p>
                         </div>
                     </div>

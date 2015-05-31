@@ -1,8 +1,14 @@
 <div profile-controller-directive>
+
     <div class="white" ng-controller="UserController" ng-init="getWallOwner()">
         <div ng-if="wallOwner.username === username || wallOwner.isFriend" ng-init="wallOwner.username === username ? getOwnFiendsList() : getUserFriends()">
             <div class="wall-header col-xs-12" ng-style="{'background-image':'url(' + (wallOwner.coverImageData ? wallOwner.coverImageData : 'images/default_cover.jpg') +')'}" ng-include="'partials/user-header.html'">
             </div>
+
+            <div ng-if="pendingRequests.length > 0" ng-include="'/partials/pending-request.html'">
+
+            </div>
+
             <legend><h2>Friends ({{friendsList.length}} total)</h2></legend>
 
             <div class="form-group col-sm-11">

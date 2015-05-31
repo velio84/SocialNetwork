@@ -29,6 +29,7 @@ socialNetwork.controller( "AppController",
                         var index =  $scope.pendingRequests.indexOf( request );
                         $scope.pendingRequests.splice(index,1);
                         notyService.showInfo( "Friend request successfully accepted." );
+                        getFriendRequests;
                     }, function( error ) {
                         notyService.showError( "Failed to accept friend request!", error );
                     }

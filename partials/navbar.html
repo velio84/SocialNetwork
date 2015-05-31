@@ -13,7 +13,7 @@
             <ul class="nav navbar-nav pull-left">
                 <li class=""><a href="#/user/{{username}}/wall/" class="glyphicon glyphicon-home"></a></li>
                 <li class=""><a href="#/" class="glyphicon glyphicon-globe"></a></li>
-                <li class="" ng-mouseenter="showPendingRequest=true" ng-mouseleave="showPendingRequest=false">
+                <li class="" ng-mouseenter="showPendingRequest=true" ng-mouseleave="showPendingRequest=false" ng-controller="AppController" ng-init="getFriendRequests()">
                     <a href="#/user/{{username}}/friends/" class="glyphicon glyphicon-user">
                         <span ng-if="pendingRequests.length > 0" class="badge"> {{pendingRequests.length}}</span>
                     </a>
