@@ -146,5 +146,21 @@ socialNetwork.controller( "ProfileController",
                 reader.readAsDataURL( file );
             }
         };
+
+        $scope.sendFriendRequest = function( previewData ) {
+            if( authentication.isLogged() ) {
+                profileService( authentication.getSessionToken() ).sendFriendRequest( previewData.username )
+                    .$promise
+                    .then(
+                    function () {
+                        notyService.showInfo( "Friend request successfully sent to " + previewData.username + "." );
+                        previewData.status = "pending";
+                    },
+                    function ( error ) {
+                        notyService.showError( "Failed to send friend request!", error );
+                    }
+                );
+            }
+        };
     }
 );

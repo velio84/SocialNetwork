@@ -134,7 +134,22 @@ socialNetwork.controller( "UserController",
                         data.userFriendsUrl = "#/user/" + $routeParams[ "username" ] + "/friends/";
                         $scope.friendsListPreview = data;
                     },
-                    function ( error ) {
+                    function( error ) {
+                        notyService.showError( "Failed to load user friends!", error );
+                    }
+                );
+            }
+        };
+
+        $scope.getUserFriends = function() {
+            if( authentication.isLogged() ) {
+                userService( authentication.getSessionToken() ).getUserFriends ($routeParams[ "username" ] )
+                    .$promise
+                    .then(
+                    function( data ) {
+                        $scope.friendsList = data;
+                    },
+                    function( error ) {
                         notyService.showError( "Failed to load user friends!", error );
                     }
                 );
