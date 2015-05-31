@@ -19,7 +19,7 @@
 
             <div class="pending-requests" data-example-id="thumbnails-with-custom-content"  >
                 <div class="row" >
-                    <div class="col-sm-5 col-md-3" ng-repeat="friend in friendsList | filter: filterFriends">
+                    <div class="col-sm-5 col-md-3" ng-repeat="friend in friendsList | filter: search">
                         <div class="thumbnail">
                             <img ng-src="{{friend.profileImageData}}" err-src="{{defaultImage}}" alt="profile picture" style="width: 100px; height: 100px"/>
                             <div class="caption">

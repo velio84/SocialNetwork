@@ -51,3 +51,7 @@ a {
 .unlike-button:hover {
     cursor: pointer;
 }
+
+.wall-header {
+    height: 300px;
+}

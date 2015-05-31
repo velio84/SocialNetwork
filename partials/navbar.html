@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="UserController">
     <div class="container-fluid">
-        <div class="navbar-brand">{{ username }}</div>
+        <span class="navbar-brand">{{ username }}</span>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
@@ -46,7 +46,7 @@
                 <li class=""><a href="#/" ng-click="logout()">Logout</a></li>
             </ul>
 
-            <form class="navbar-form navbar-right" id="search-form" role="search">
+            <form class="navbar-form navbar-right col-sm-12 col-xs-12" id="search-form" role="search">
                 <div class="input-group">
                     <input type="text" id="search-input" ng-model="searchTerm" ng-change="searchUser();" ng-blur="clearSearchResults()" class="form-control" placeholder="Search by name...">
                 </div>
