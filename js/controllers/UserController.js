@@ -1,9 +1,10 @@
 "use strict";
 
 socialNetwork.controller( "UserController", 
-	function UserController( $scope, $location, $timeout, $routeParams, userService, authentication, notyService ) {
+	function UserController( $scope, $location, $timeout, $routeParams, userService, authentication, notyService, PAGE_SIZE ) {
 
         var feedStartPostId;
+        $scope.posts = [];
 
 		$scope.login = function() {
 			if( !authentication.isLogged() ) {
@@ -117,6 +118,7 @@ socialNetwork.controller( "UserController",
                         if( $scope.posts.length > 0 ) {
                             feedStartPostId = $scope.posts[ $scope.posts.length - 1 ].id;
                         }
+                        console.log( data );
                     },
                     function ( error ) {
                         notyService.showError( "Failed to load user wall!", error );
@@ -126,7 +128,7 @@ socialNetwork.controller( "UserController",
         };
 
         $scope.getUserFriendsListPreview = function() {
-            if (authentication.isLogged() ) {
+            if ( authentication.isLogged() ) {
                 userService( authentication.getSessionToken() ).getUserFriendsPreview( $routeParams[ "username" ] )
                     .$promise
                     .then(

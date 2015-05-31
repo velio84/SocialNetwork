@@ -17,6 +17,7 @@ socialNetwork.controller( "ProfileController",
                             feedStartPostId = $scope.posts[ $scope.posts.length - 1 ].id;
                         }
                         $scope.isNewsFeed = true;
+                        console.log(data);
                     },
                     function ( error ) {
                         notyService.showError( "Failed to load news feed.", error );
