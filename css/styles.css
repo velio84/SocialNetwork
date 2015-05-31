@@ -34,3 +34,15 @@
 a {
     color: darkcyan;
 }
+
+.news-feed-box {
+    border-radius: 20px;
+}
+
+.like-button:hover {
+    cursor: pointer;
+}
+
+.unlike-button:hover {
+    cursor: pointer;
+}

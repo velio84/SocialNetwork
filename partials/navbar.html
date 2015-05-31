@@ -1,6 +1,6 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="UserController">
     <div class="container-fluid">
-        <a href="#/" class="navbar-brand">{{ username }}</a>
+        <div class="navbar-brand">{{ username }}</div>
 
         <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
@@ -12,6 +12,7 @@
 
             <ul class="nav navbar-nav pull-left">
                 <li class=""><a href="#/user/{{username}}/wall/">Home</a></li>
+                <li class=""><a href="#/">Feed</a></li>
                 <li class=""><a href="#/user/{{username}}/friends/">Friends</a></li>
             </ul>
 
