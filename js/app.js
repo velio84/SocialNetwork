@@ -1,8 +1,10 @@
 "use strict";
 
 var socialNetwork = angular
-	.module( "socialNetwork", [ "ngResource", "ngRoute" ] )
-	.config( function( $routeProvider ) {
+	.module( "socialNetwork", [ "ngResource", "ngRoute", ] )
+	.config( function( $routeProvider, $httpProvider ) {
+
+        $httpProvider.interceptors.push( "httpResponseErrorChecker" );
 
 		$routeProvider
 			.when( "/", {
@@ -53,6 +55,17 @@ var socialNetwork = angular
                     isLogged: function($location){
                         if( !localStorage.getItem( "sessionToken" ) ) {
                             $location.path('/');
+                        }
+                    }
+                }
+            })
+            .when( "/404", {
+                templateUrl: 'partials/404.html',
+                controller: 'AppController',
+                resolve:{
+                    isLogged: function( $location ) {
+                        if(!localStorage.getItem( "sessionToken" )){
+                            $location.path( "/" );
                         }
                     }
                 }
